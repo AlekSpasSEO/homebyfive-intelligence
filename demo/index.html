@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Atlas Home Services performance, opportunities and channel intelligence. A Home by Five demo with entirely synthetic data.">
+  <title>Atlas Home Services · Home by Five</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard</a>
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Home by Five home"><span class="brand-mark" aria-hidden="true">h5</span>home by five</a>
+    <div class="top-actions"><a class="text-button" href="../pricing/">Compare plans</a><span class="demo-label">Synthetic demo</span><button class="text-button" data-methodology>How the numbers work <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <main id="main" class="app-main">
+    <header class="page-heading"><div><h1>Atlas Home Services</h1><p id="page-subtitle">Network overview</p></div><span class="network-badge">24 locations · United States</span></header>
+    <section class="toolbar" aria-label="Dashboard controls">
+      <div class="window-controls"><div id="range-controls" class="segmented" aria-label="Reporting window"><button data-range="month" aria-pressed="true">Month</button><button data-range="quarter" aria-pressed="false">Quarter</button><button data-range="half" aria-pressed="false">6 months</button></div><label class="select-label"><span class="sr-only">Reporting period</span><select id="period"></select></label><span class="muted">vs.</span><label class="select-label"><span class="sr-only">Compare with</span><select id="comparison"><option value="previous">Previous period</option><option value="year">Year over year</option></select></label></div>
+      <div class="scope-controls"><label><span class="sr-only">Location</span><select id="location-select"></select></label><label><span class="sr-only">Channel</span><select id="channel-select"></select></label></div>
+    </section>
+    <div id="scope-heading" class="scope-heading"></div>
+    <p id="window-description" class="window-description"></p>
+    <section id="kpis" class="kpi-grid" aria-label="Performance KPIs"><p role="status">Loading your dashboard…</p></section>
+    <section class="panel trend-panel" aria-labelledby="trend-title"><div id="trend-heading" class="panel-heading"></div><div id="trend-chart"></div><details class="chart-data"><summary>View chart values</summary><div id="trend-table" class="table-scroll"></div></details></section>
+    <section class="panel opportunity-panel" aria-labelledby="monthly-title"><div id="monthly-opportunity"></div></section>
+    <div class="performance-grid">
+      <section class="panel location-panel" aria-labelledby="locations-heading">
+        <div class="panel-heading"><div><h2 id="locations-heading">Location performance</h2><p id="location-caption">Select a city to switch the full dashboard.</p></div><span id="location-total" class="count-pill">24</span></div>
+        <div id="network-table">
+          <div class="table-controls"><label class="search-field"><span class="sr-only">Search locations</span><input id="search" type="search" placeholder="Search locations…" autocomplete="off" maxlength="100"></label><label><span class="sr-only">Sort locations</span><select id="sort"><option value="opportunity">Highest opportunity</option><option value="revenue">Highest revenue</option><option value="growth">Highest growth</option><option value="potential">Highest potential</option><option value="name">Location A–Z</option></select></label></div>
+          <div id="filters" class="filter-row" aria-label="Filter locations"></div>
+          <div class="table-scroll location-table" tabindex="0" aria-label="Scrollable location performance"><table><thead><tr><th>Location</th><th>Revenue</th><th>Change</th><th>Spend</th><th>ROI</th><th>Potential</th><th>Presence</th><th>Focus</th></tr></thead><tbody id="location-rows"></tbody></table><div id="empty-state" class="empty-state" hidden><strong>No matching locations</strong><p>Try another city or clear the table filters.</p><button class="small-button" id="clear-filters">Clear filters</button></div></div>
+          <div class="table-footer"><span id="result-count" aria-live="polite"></span><span>Table filters affect the map, not KPI totals.</span></div>
+        </div>
+        <div id="location-detail" hidden></div>
+      </section>
+      <section class="panel attention-panel" aria-labelledby="attention-title"><div class="panel-heading"><div><h2 id="attention-title">What deserves attention</h2><p>Open a finding to see the evidence and rule.</p></div></div><div id="attention-list"></div><p class="panel-footnote">Location-wide signals · rule-based, not a prediction.</p></section>
+    </div>
+    <section class="panel landscape-panel" aria-labelledby="landscape-title"><div class="panel-heading"><div><h2 id="landscape-title">Market demand & visibility</h2><p>Where is the market attractive, and how visible are we?</p></div><span id="plot-count" class="count-pill"></span></div><div class="landscape-layout"><div class="plot-wrap"><div class="plot-axis-label">Potential / 100 · higher market attractiveness ↑</div><div id="opportunity-plot" class="opportunity-plot"></div><div class="axis-x"><span>0 · Less visible</span><span>Presence / 100 →</span><span>100 · More visible</span></div><div class="map-legend"><span><i class="growth-dot"></i>Growth</span><span><i class="attention-dot"></i>Attention</span><span><i class="established-dot"></i>Established</span><span><i class="gaps-dot"></i>Data gap</span></div><p class="plot-note">Each dot is a location. Size = revenue for the selected channel and period. Select a dot to open that location.</p></div><div class="score-guide"><article><span class="score-icon">P</span><div><h3>Potential = market attractiveness</h3><p>A 0–100 index of service demand, serviceable households and competitive headroom. Higher means a more attractive market, not guaranteed sales.</p></div></article><article><span class="score-icon pale">V</span><div><h3>Presence = our current visibility</h3><p>A 0–100 index of search visibility, Maps visibility and brand recognition. Higher means we are easier to find. It is not market share.</p></div></article><div class="guide-callout"><strong>Start at the upper left.</strong><p>High potential + low presence suggests room to improve acquisition, but only if booking conversion and capacity support it.</p></div><p class="small-muted">Illustrative location-wide scores, unchanged by channel selection. The 65-point guides aid reading; action rules also consider conversion and source quality.</p><button class="inline-button" data-methodology>See score weights & assumptions ↗</button></div></div></section>
+    <section class="panel channels-panel" aria-labelledby="channels-title"><div class="panel-heading"><div><h2 id="channels-title">Channel economics</h2><p id="channel-caption">Select a channel to open its full performance view.</p></div><button class="small-button" data-channel="all">All channels</button></div><div id="channels" class="channel-grid"></div><div id="channel-detail"></div><div id="channel-note" class="panel-footnote"></div></section>
+    <footer class="app-footer"><span>Fictional company and data. No live systems connected.</span><span>Home by Five · Demo 02</span></footer>
+  </main>
+  <dialog id="methodology-dialog" class="methodology-dialog" aria-labelledby="methodology-title">
+    <div class="modal-header"><h2 id="methodology-title">How the numbers work</h2><button class="close-button" data-close aria-label="Close definitions">×</button></div>
+    <div class="methodology-body">
+      <p>Every figure, score and finding in this 24-location network is synthetic. This is a product demo, not an assessment of an actual business.</p>
+      <h3>Complete, comparable windows</h3><p>Month uses a complete calendar month; Quarter uses a complete calendar quarter; 6 months uses Jan–Jun or Jul–Dec. The latest complete windows in the demo are August 2026, Q2 2026 and Jan–Jun 2026. Previous compares the immediately preceding window of equal length. Year over year shifts the same window back 12 months. Totals sum monthly records; ratios are calculated from totals, not averages of percentages.</p>
+      <h3>Revenue-based ROI, not profit</h3><p>ROI = (Revenue − Marketing spend) ÷ Marketing spend × 100. Marketing spend includes advertising plus allocated marketing and management costs. Delivery costs, cost of goods, overhead and taxes are excluded, so this is not profit ROI or a causal measure of marketing lift. A 100% ROI here means $2 of recorded revenue for every $1 of marketing cost.</p>
+      <h3>Channel views</h3><p>All channels includes all recorded revenue. Individual channels include revenue linked to that source in the synthetic model. Unresolved sources remain separate rather than being assigned to Direct & Referral. Channel matching does not establish causation. Channel ROI is withheld when source coverage in the selected location scope is below 50%. Paid combines Google Ads and Social Ads; Social combines Social Ads and Community. These groups overlap and must not be summed together.</p>
+      <h3>Monthly opportunity</h3><p>This is an illustrative range of additional monthly revenue, not a forecast, profit estimate or selected-period total. It uses the final month of the reporting window. For each eligible growth market: incremental qualified lead headroom × 40–70% capture × booking conversion × average job value, capped by spare delivery capacity. The lower and upper location scenarios are summed across distinct fictional territories. Channel views allocate the same opportunity using modeled demand shares; they do not create extra opportunity. The score gap alone never determines dollars.</p>
+      <h3>Potential and presence</h3><p>Potential = 50% local service demand + 30% serviceable households + 20% competitive headroom. Presence = 45% search-result visibility + 35% Maps visibility + 20% brand recognition. All components are fictional normalized 0–100 inputs; these indices are not percentages, validated market sizes or market share. Detailed location views show each component.</p>
+      <h3>Findings and charts</h3><p>Findings check source quality first, then booking conversion, then market scores. Open each finding to see the exact rule and observations. Scores use the latest month; booking conversion and source coverage use the selected window. Opportunity uses the final month's inputs. Monthly charts use illustrative daily allocations that sum exactly to the monthly totals. Comparison days align by day number, with missing days left blank; quarter and half-year charts align corresponding months.</p>
+    </div><div class="modal-footer"><button class="primary-button" data-close>Back to dashboard</button></div>
+  </dialog>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript><p>Enable JavaScript to explore this demo.</p></noscript>
+</body>
+</html>
